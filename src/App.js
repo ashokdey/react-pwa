@@ -11,7 +11,7 @@ class App extends Component {
           <Header title="ProductHuntPWA">
             <Navigation className="hide-on-sm"></Navigation>
           </Header>
-          <Drawer title="ProductHubt">
+          <Drawer title="ProductHunt">
             <Navigation></Navigation>
           </Drawer>          
           <Content>
