@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import {Layout, Header, Content, Navigation, Drawer} from 'react-mdl';
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+
+function closeDrawer() {
+  document.querySelector('.mdl-layout').MaterialLayout.toggleDrawer();
+}
 
 class App extends Component {
   render() {
@@ -12,12 +16,15 @@ class App extends Component {
             <Layout fixedHeader>
               <Header title="ProductHuntPWA">
                 <Navigation className="hide-on-sm">
-                  <Link to="tech">Tech products</Link>
-                  <Link to="games">Game products</Link>
+                  <Link to="tech">Tech Products</Link>
+                  <Link to="games">Game Products</Link>
                 </Navigation>
               </Header>
               <Drawer title="ProductHunt">
-                <Navigation></Navigation>
+                <Navigation>
+                  <Link to="tech" onClick={closeDrawer}>Tech Products</Link>
+                  <Link to="games" onClick={closeDrawer}>Game Products</Link>
+                </Navigation>
               </Drawer>          
               <Content>
                 Dynamic  content here 
