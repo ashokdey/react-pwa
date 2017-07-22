@@ -6,8 +6,22 @@ self.addEventListener('install',  event => {
       [
         '/static/js/bundle.js',
         '/index.html', 
-        '/'
+        '/',
+        '/fonts/icons.css',
+        '/fonts/material.ttf',
+        '/fonts/material.woff',
+        '/fonts/material.woff2'
       ]
     ))
+  );
+});
+
+self.addEventListener('fetch', event  => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      if(response) {
+        return response;
+      }
+    })
   );
 });
