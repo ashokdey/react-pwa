@@ -5,6 +5,13 @@ const KEY = 'Bearer 4bf782db360dd58f4411996195a4c3173e058cd5f14e169dfb31387c4701
 const URL = 'https://api.producthunt.com/v1/categories/tech/posts';
 
 export default class TechProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    }
+  }
+
   componentDidMount() {
     fetch(URL, {
       method: 'GET',
@@ -12,7 +19,12 @@ export default class TechProduct extends Component {
         'Authorization': KEY
       }
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data =>{
+        this.setState({
+          posts: data.posts
+        }); 
+        console.log(data)
+      })
       .catch(err => console.log(err));
   }
   render() {
