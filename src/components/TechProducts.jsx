@@ -5,6 +5,15 @@ import {Spinner} from 'react-mdl';
 const KEY = 'Bearer 4bf782db360dd58f4411996195a4c3173e058cd5f14e169dfb31387c4701fe48';
 const URL = 'https://api.producthunt.com/v1/categories/tech/posts';
 
+const spinnerStyle = {
+	margin : 'auto',
+	top : 0,
+	left : 0,
+	bottom : 0,
+	right : 0,
+	position : 'fixed'
+}
+
 export default class TechProduct extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +43,7 @@ export default class TechProduct extends Component {
     return (
       <div style={{marginTop: '5%'}}>
         {
-          !this.state.isLoaded && <Spinner/>
+          !this.state.isLoaded && <Spinner style={spinnerStyle}/>
         }
         {
           this.state.posts.map((post) => {
