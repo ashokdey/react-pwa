@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import {Spinner, Card, CardTitle, CardText, CardActions, Button, Snackbar} from 'react-mdl';
 
-const KEY = 'Bearer 4bf782db360dd58f4411996195a4c3173e058cd5f14e169dfb31387c4701fe48';
-const URL = 'https://api.producthunt.com/v1/categories/tech/posts';
+const KEY = 'Bearer 5528a9b19b4549f1b1dd20b55014971b6fa45770eeeb38550f44dccb260c0bec';
+const URL = 'https://api.producthunt.com/v1/posts/all?search[category]=tech';
 
 const spinnerStyle = {
 	margin : 'auto',
@@ -19,7 +19,8 @@ export default class TechProduct extends Component {
   // and shows onine  notification    
   _hideIndicator() {
     this.setState({
-      isOffline: false
+      isOffline: false,
+      isSnackbarActive: false      
     });
   }
 
@@ -27,7 +28,14 @@ export default class TechProduct extends Component {
   // and shows offline  notification  
   _showIndicator() {
     this.setState({
-      isOffline: true
+      isOffline: true,
+      isSnackbarActive: true
+    });
+  }
+
+  _handleTimeoutSnackbar() {
+    this.setState({ 
+      isSnackbarActive: false 
     });
   }
   
@@ -35,11 +43,14 @@ export default class TechProduct extends Component {
     super(props);
     this.state = {
       posts: [],
-      isLoaded:  false
+      isLoaded:  false,
+      isOffline: false,
+      isSnackbarActive: false
     }
 
     this._hideIndicator = this._hideIndicator.bind(this);
     this._showIndicator = this._showIndicator.bind(this);
+    this._handleTimeoutSnackbar = this._handleTimeoutSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -94,7 +105,7 @@ export default class TechProduct extends Component {
             )
           })
         }
-      <Snackbar active={this.state.isOffline} action="undo">
+      <Snackbar active={this.state.isOffline} action="undo" onTimeout={this._handleTimeoutSnackbar}>
         You're offline, but app will still work!
       </Snackbar>
       </div>
