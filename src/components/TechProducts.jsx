@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
-import {Spinner, Card, CardTitle, CardText, CardActions, Button} from 'react-mdl';
+import {Spinner, Card, CardTitle, CardText, CardActions, Button, Snackbar} from 'react-mdl';
 
 const KEY = 'Bearer 4bf782db360dd58f4411996195a4c3173e058cd5f14e169dfb31387c4701fe48';
 const URL = 'https://api.producthunt.com/v1/categories/tech/posts';
@@ -15,15 +15,36 @@ const spinnerStyle = {
 }
 
 export default class TechProduct extends Component {
+  // set isOffline to false when nework is available
+  // and shows onine  notification    
+  _hideIndicator() {
+    this.setState({
+      isOffline: false
+    });
+  }
+
+  // set isOffline to true when nework is no available
+  // and shows offline  notification  
+  _showIndicator() {
+    this.setState({
+      isOffline: true
+    });
+  }
+  
   constructor(props) {
     super(props);
     this.state = {
       posts: [],
       isLoaded:  false
     }
+
+    this._hideIndicator = this._hideIndicator.bind(this);
+    this._showIndicator = this._showIndicator.bind(this);
   }
 
   componentDidMount() {
+    window.addEventListener('offline', this._showIndicator);
+
     fetch(URL, {
       method: 'GET',
       headers: {
@@ -34,7 +55,8 @@ export default class TechProduct extends Component {
         // set the data in the state
         this.setState({
           posts: data.posts,
-          isLoaded: true
+          isLoaded: true,
+          isOffline: false
         }); 
 
         // store the data in the localstorage so that it can be used in offline mode
@@ -72,6 +94,9 @@ export default class TechProduct extends Component {
             )
           })
         }
+      <Snackbar active={this.state.isOffline} action="undo">
+        You're offline, but app will still work!
+      </Snackbar>
       </div>
     );
   }
