@@ -23,9 +23,20 @@ self.addEventListener('fetch', event  => {
         return response;
       }
 
-      let fetchRequest = event.request.clone();
-      return fetch(fetchRequest);
+      // Dynamically caching images lin 28-39
 
+      let fetchRequest = event.request.clone();
+      return fetch(fetchRequest).then(fetchRes => {
+        if(!fetchRes || fetchRes.status !== 0) {
+          return fetchRes
+        }
+
+        let responseToCache = fetchRes.clone();
+        caches.open(cacheName).then(cache => {
+          cache.put(event.req, responseToCache);
+        });
+        return fetchRes;
+      });
     })
   );
 });
