@@ -75,6 +75,7 @@ export default class TechProduct extends Component {
         console.log(data)
       })
       .catch(err => {
+        // set state from the most recent posts stored in localStorage
         this.setState({
           posts: JSON.parse(localStorage['techposts-adpwa']),
           isLoaded: true
