@@ -24,7 +24,7 @@ export default class TechProduct extends Component {
     });
   }
 
-  // set isOffline to true when nework is no available
+  // set isOffline to true when nework is not available
   // and shows offline  notification  
   _showIndicator() {
     this.setState({
@@ -105,7 +105,7 @@ export default class TechProduct extends Component {
             )
           })
         }
-      <Snackbar active={this.state.isOffline} action="undo" onTimeout={this._handleTimeoutSnackbar}>
+      <Snackbar active={this.state.isOffline} action="Thanks" onTimeout={this._handleTimeoutSnackbar}>
         You're offline, but app will still work!
       </Snackbar>
       </div>

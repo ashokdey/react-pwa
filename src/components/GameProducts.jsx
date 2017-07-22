@@ -106,7 +106,7 @@ export default class GameProduct extends Component {
             )
           })
         }
-      <Snackbar active={this.state.isOffline} action="undo" onTimeout={this._handleTimeoutSnackbar}>
+      <Snackbar active={this.state.isOffline} action="Thanks" onTimeout={this._handleTimeoutSnackbar}>
         You're offline, but app will still work!
       </Snackbar>
       </div>
