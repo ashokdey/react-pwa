@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import {Layout, Header, Content, Navigation, Drawer} from 'react-mdl';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
+import TechProducts from './components/TechProducts';
 
 function closeDrawer() {
   document.querySelector('.mdl-layout').MaterialLayout.toggleDrawer();
@@ -27,7 +28,7 @@ class App extends Component {
                 </Navigation>
               </Drawer>          
               <Content>
-                Dynamic  content here 
+                <Route path="/tech" component={TechProducts}/>
               </Content>
             </Layout>
         </Router>
