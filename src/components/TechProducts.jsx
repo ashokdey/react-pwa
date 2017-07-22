@@ -28,15 +28,14 @@ export default class TechProduct extends Component {
   // and shows offline  notification  
   _showIndicator() {
     this.setState({
-      isOffline: true,
-      isSnackbarActive: true
+      isOffline: true
     });
   }
 
   _handleTimeoutSnackbar() {
-    this.setState({ 
-      isSnackbarActive: false 
-    });
+    // this.setState({ 
+    //   isSnackbarActive: false 
+    // });
   }
   
   constructor(props) {
@@ -100,7 +99,7 @@ export default class TechProduct extends Component {
                   Posted  by {post.user.username}
                 </CardText>
                 <CardActions>
-                  <Button colored> Show {post.comments_count} Comments </Button> 
+                  <Button raised colored> Show {post.comments_count} Comments </Button> 
                 </CardActions>
               </Card>
             )

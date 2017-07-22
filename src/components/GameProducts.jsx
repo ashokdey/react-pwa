@@ -5,6 +5,15 @@ import {Spinner, Card, CardTitle, CardText, CardActions, Button, Snackbar} from 
 const KEY = 'Bearer 5528a9b19b4549f1b1dd20b55014971b6fa45770eeeb38550f44dccb260c0bec';
 const URL = 'https://api.producthunt.com/v1/posts/all?search[category]=games';
 
+const spinnerStyle = {
+	margin : 'auto',
+	top : 0,
+	left : 0,
+	bottom : 0,
+	right : 0,
+	position : 'fixed'
+}
+
 export default class GameProduct extends Component {
 
   // set isOffline to false when nework is available
@@ -21,14 +30,14 @@ export default class GameProduct extends Component {
   _showIndicator() {
     this.setState({
       isOffline: true,
-      isSnackbarActive: true
+      // isSnackbarActive: true
     });
   }
 
   _handleTimeoutSnackbar() {
-    this.setState({ 
-      isSnackbarActive: false 
-    });
+    // this.setState({ 
+    //   isSnackbarActive: false 
+    // });
   }
 
   constructor(props) {
@@ -76,10 +85,30 @@ export default class GameProduct extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          This is from game products
-        </p>
+      <div style={{marginTop: '5%'}}>
+        {
+          !this.state.isLoaded && <Spinner style={spinnerStyle}/>
+        }
+        {
+          this.state.posts.map((post) => {
+            return (
+              <Card key={post.id} shadow={0} style={{width: '512px', margin: 'auto', marginBottom: '1%'}}>
+                <CardTitle style={{color: '#fff', fontWeight: 'bolder', height: '176px', background: `url(${post.thumbnail.image_url}) center / cover`}}>
+                  {post.tagline}
+                </CardTitle>
+                <CardText>
+                  Posted  by {post.user.username}
+                </CardText>
+                <CardActions>
+                  <Button raised colored> Show {post.comments_count} Comments </Button> 
+                </CardActions>
+              </Card>
+            )
+          })
+        }
+      <Snackbar active={this.state.isOffline} action="undo" onTimeout={this._handleTimeoutSnackbar}>
+        You're offline, but app will still work!
+      </Snackbar>
       </div>
     );
   }
