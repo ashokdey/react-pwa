@@ -4,6 +4,7 @@ import './App.css';
 import {Layout, Header, Content, Navigation, Drawer} from 'react-mdl';
 import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
 import TechProducts from './components/TechProducts';
+import GameProducts from './components/GameProducts';
 
 function closeDrawer() {
   document.querySelector('.mdl-layout').MaterialLayout.toggleDrawer();
@@ -29,6 +30,7 @@ class App extends Component {
               </Drawer>          
               <Content>
                 <Route path="/tech" component={TechProducts}/>
+                <Route path="/games" component={GameProducts}/>
               </Content>
             </Layout>
         </Router>
