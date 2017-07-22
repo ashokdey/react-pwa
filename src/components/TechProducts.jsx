@@ -92,7 +92,7 @@ export default class TechProduct extends Component {
           this.state.posts.map((post) => {
             return (
               <Card key={post.id} shadow={0} style={{width: '512px', margin: 'auto', marginBottom: '1%'}}>
-                <CardTitle style={{color: '#800000', fontWeight: 'bolder', height: '176px', background: `url(${post.thumbnail.image_url}) center / cover`}}>
+                <CardTitle style={{color: '#fff', fontWeight: 'bolder', height: '176px', background: `url(${post.thumbnail.image_url}) center / cover`}}>
                   {post.tagline}
                 </CardTitle>
                 <CardText>
