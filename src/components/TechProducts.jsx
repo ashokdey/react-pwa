@@ -31,13 +31,23 @@ export default class TechProduct extends Component {
       }
     }).then(response => response.json())
       .then(data =>{
+        // set the data in the state
         this.setState({
           posts: data.posts,
           isLoaded: true
         }); 
+
+        // store the data in the localstorage so that it can be used in offline mode
+        localStorage['techposts-adpwa'] = JSON.stringify(data.posts);
         console.log(data)
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.setState({
+          posts: JSON.parse(localStorage['techposts-adpwa']),
+          isLoaded: true
+        });
+        console.log(err)
+      });
   }
   render() {
     return (
