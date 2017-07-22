@@ -22,6 +22,10 @@ self.addEventListener('fetch', event  => {
       if(response) {
         return response;
       }
+
+      let fetchRequest = event.request.clone();
+      return fetch(fetchRequest);
+
     })
   );
 });
