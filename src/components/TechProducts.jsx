@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
-import {Spinner} from 'react-mdl';
+import {Spinner, Card, CardTitle, CardText, CardActions, Button} from 'react-mdl';
 
 const KEY = 'Bearer 4bf782db360dd58f4411996195a4c3173e058cd5f14e169dfb31387c4701fe48';
 const URL = 'https://api.producthunt.com/v1/categories/tech/posts';
@@ -58,9 +58,17 @@ export default class TechProduct extends Component {
         {
           this.state.posts.map((post) => {
             return (
-              <div key={post.id}>
-                {post.tagline} by {post.user.username}
-              </div>
+              <Card key={post.id} shadow={0} style={{width: '512px', margin: 'auto', marginBottom: '1%'}}>
+                <CardTitle style={{color: '#800000', fontWeight: 'bolder', height: '176px', background: `url(${post.thumbnail.image_url}) center / cover`}}>
+                  {post.tagline}
+                </CardTitle>
+                <CardText>
+                  Posted  by {post.user.username}
+                </CardText>
+                <CardActions>
+                  <Button colored> Show {post.comments_count} Comments </Button> 
+                </CardActions>
+              </Card>
             )
           })
         }
