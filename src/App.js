@@ -17,14 +17,14 @@ class App extends Component {
       <div className="App">
         <Router>
             <Layout fixedHeader>
-              <Header title="ProductHuntPWA">
+              <Header title="ReactPWA">
                 <Navigation className="hide-on-sm">
                   <Link to="/">Home</Link>                  
                   <Link to="tech">Tech Products</Link>
                   <Link to="games">Game Products</Link>
                 </Navigation>
               </Header>
-              <Drawer title="ProductHunt">
+              <Drawer title="ReactPWA">
                 <Navigation>
                   <Link to="/" onClick={closeDrawer}>Home</Link>                  
                   <Link to="tech" onClick={closeDrawer}>Tech Products</Link>
