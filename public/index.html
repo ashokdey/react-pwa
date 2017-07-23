@@ -11,6 +11,19 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="stylesheet" href="%PUBLIC_URL%/fonts/icons.css">
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/sw.js`).then((register) => {
+          console.log('worked', register);
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch((err) => {
+          console.log('Error', err);
+        });
+      }
+      else {
+        console.log('No support for SW');
+      }
+    </script>
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.

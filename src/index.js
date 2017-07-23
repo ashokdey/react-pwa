@@ -7,7 +7,7 @@ import 'react-mdl/extra/material.css';
 import 'react-mdl/extra/material.js';
 
 //import registerServiceWorker from './registerServiceWorker';
-import registerServiceWorker from './serviceWorkerDev';
+// import registerServiceWorker from './serviceWorkerDev';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();
