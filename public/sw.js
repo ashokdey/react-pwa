@@ -23,7 +23,7 @@ self.addEventListener('fetch', event  => {
         return response;
       }
 
-      // Dynamically caching images lin 28-39
+      // Dynamically caching images line 28-39
 
       let fetchRequest = event.request.clone();
       return fetch(fetchRequest).then(fetchRes => {
