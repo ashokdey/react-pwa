@@ -13,33 +13,33 @@ function closeDrawer() {
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <Router>
-            <Layout fixedHeader>
-              <Header title="ReactPWA">
-                <Navigation className="hide-on-sm">
-                  <Link to="/">Home</Link>                  
-                  <Link to="tech">Tech Products</Link>
-                  <Link to="games">Game Products</Link>
-                </Navigation>
-              </Header>
-              <Drawer title="ReactPWA">
-                <Navigation>
-                  <Link to="/" onClick={closeDrawer}>Home</Link>                  
-                  <Link to="tech" onClick={closeDrawer}>Tech Products</Link>
-                  <Link to="games" onClick={closeDrawer}>Game Products</Link>
-                </Navigation>
-              </Drawer>          
-              <Content>
-                <Route exact path="/" component={Main}/>
-                <Route exact path="/tech" component={TechProducts}/>
-                <Route exact path="/games" component={GameProducts}/>
-              </Content>
-            </Layout>
-        </Router>
-      </div>
-    );
+  return (
+    <div className="App">
+    <Router>
+      <Layout fixedHeader>
+        <Header title="ReactPWA">
+        <Navigation className="hide-on-sm">
+          <Link to="/">Home</Link>                  
+          <Link to="tech">Tech Products</Link>
+          <Link to="games">Game Products</Link>
+        </Navigation>
+        </Header>
+        <Drawer title="ReactPWA">
+        <Navigation>
+          <Link to="/" onClick={closeDrawer}>Home</Link>                  
+          <Link to="tech" onClick={closeDrawer}>Tech Products</Link>
+          <Link to="games" onClick={closeDrawer}>Game Products</Link>
+        </Navigation>
+        </Drawer>          
+        <Content>
+        <Route exact path="/" component={Main}/>
+        <Route exact path="/tech" component={TechProducts}/>
+        <Route exact path="/games" component={GameProducts}/>
+        </Content>
+      </Layout>
+    </Router>
+    </div>
+  );
   }
 }
 

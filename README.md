@@ -5,3 +5,7 @@
 - fetch() API to make API calls
 - Used the ProductHunt API
 - Working to improve the App Score
+
+###  Current PWA Score
+
+![PWA Score](./assets/score.PNG)

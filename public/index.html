@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="%PUBLIC_URL%/fonts/icons.css">
   <script>
     if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/sw.js`).then((register) => {
+    navigator.serviceWorker.register('/sw.js').then((register) => {
       console.log('worked', register);
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      console.log('ServiceWorker registration successful with scope: ', register.scope);
     }).catch((err) => {
       console.log('Error', err);
     });
