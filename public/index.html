@@ -12,7 +12,7 @@
   <link rel="shortcut icon" href="%PUBLIC_URL%/icon.ico">
   <link rel="stylesheet" href="%PUBLIC_URL%/fonts/icons.css">
   <script>
-    if('serviceWorker' in navigator) {
+    (function(){if('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').then((register) => {
       console.log('worked', register);
       console.log('ServiceWorker registration successful with scope: ', register.scope);
@@ -22,7 +22,7 @@
     }
     else {
     console.log('No support for SW');
-    }
+    }})()
   </script>
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
   <!--
